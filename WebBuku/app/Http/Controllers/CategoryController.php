@@ -28,5 +28,27 @@ class CategoryController extends Controller
         ]);
         return redirect()->route('index.Category');
     }
- }
+
+    public function EditCategory(category $id){
+        return view('category.EditCategory', compact('id'));
+    }
+
+    public function EditCategoryAction(Request $request, string $id)
+    {
+        DB::table('category')->where('id', $id)->update([
+            'NamaCategory'=> $request->NamaCategory,
+            'Description'=> $request->Description,
+            'CreateAt'=> date ('Y-m-d'),
+            'CreateBy'=> '1',
+        ]);
+        return redirect()->route('index.Category');
+    }
+
+    public function DeleteCategoryAction(category $id)
+    {
+        $id->delete();
+        return redirect()->route('index.Category');
+    }
+    
+}
 
