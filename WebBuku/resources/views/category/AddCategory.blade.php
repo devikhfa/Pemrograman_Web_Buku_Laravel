@@ -13,7 +13,8 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm">
+            <form id="quickForm" action="{{route ('index.AddCategoryAction') }}" method="post" enctype="multipart/form-data">
+                @csrf
             <div class="card-body">
                 <div class="form-group">
                 <label>Nama Category</label>
@@ -46,13 +47,14 @@
 
 @section('js')
 <!-- jquery-validation -->
-<script src="plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="plugins/jquery-validation/additional-methods.min.js"></script>
+<script src="{{ asset('plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
 <script>
 $(function() {
     $.validator.setDefaults({
     submitHandler: function() {
+        $("#quickForm").submit();
         alert("Form successful submitted!");
     }
     });

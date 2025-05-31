@@ -7,7 +7,7 @@
     <div class="card-header">
         <h3 class="card-title">Tabel Kategory</h3>
         <div class="">
-            <a href="/AddCategory" class="btn btn-primary float-right">Add Category</a>
+            <a href="{{ route ('index.AddCategory') }}" class="btn btn-primary float-right">Add Category</a>
         </div>
     </div>
     <!-- /.card-header -->
