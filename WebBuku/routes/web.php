@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BukuController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,3 +32,13 @@ Route::get("/User/EditUser{id}", [UserController::class, 'EditUser'])->name('ind
 Route::put("/User/EditUserAction{id}", [UserController::class, 'EditUserAction'])->name('index.EditUserAction');
 
 Route::delete("/User/DeleteUserAction{id}", [UserController::class, 'DeleteUserAction'])->name('index.DeleteUserAction');
+
+
+Route::get("/Buku", [BukuController::class, 'index'])->name('index.Buku');
+Route::get("/Buku/AddBuku", [BukuController::class, 'AddBuku'])->name('index.AddBuku');
+Route::post("/Buku/AddBukuAction", [BukuController::class, 'AddBukuAction'])->name('index.AddBukuAction');
+
+Route::get("/Buku/EditBuku{id}", [BukuController::class, 'EditBuku'])->name('index.EditBuku');
+Route::put("/Buku/EditBukuAction{id}", [BukuController::class, 'EditBukuAction'])->name('index.EditBukuAction');
+
+Route::delete("/Buku/DeleteBukuAction{id}", [BukuController::class, 'DeleteBukuAction'])->name('index.DeleteBukuAction');
