@@ -68,15 +68,21 @@
 <body>
   <div class="login-container">
     <h1>Login</h1>
+    
+    @if(Session::has('error'))
+      <div class="alert alert-danger" style="color: red; margin-bottom: 15px; padding: 10px; border-radius: 5px; background: #ffebee;">
+        {{ Session::get('error') }}
+      </div>
+    @endif
+
     <form action="{{ route('actionlogin') }}" method="POST">
-       @csrf
+      @csrf
       <label>Email</label>
       <input type="email" name="email" placeholder="Masukkan email" required />
       <label>Password</label>
       <input type="password" name="password" placeholder="Masukkan password" required />
       <button type="submit">Login</button>
     </form>
-
   </div>
 </body>
 </html>
