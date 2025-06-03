@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BukuController extends Controller
 {
@@ -14,6 +15,7 @@ class BukuController extends Controller
         ->join('category', 'buku.IdCategory', '=', 'category.id')
         ->select('buku.*', 'category.NamaCategory')
         ->where('buku.Isactive', '1')
+        ->where('buku.CreateBy', Auth::user()->id)
         ->get();
         return view('buku.index', compact('Buku'));
 
@@ -43,7 +45,7 @@ class BukuController extends Controller
             'Pengarang'=> $request->Pengarang,
             'Sampul'=> $fileName,
             'CreateAt'=> date ('Y-m-d'),
-            'CreateBy'=> '1',
+            'CreateBy'=> Auth::user()->id,
             'Isactive'=>'1',
         ]);
         return redirect()->route('index.Buku');
@@ -87,6 +89,7 @@ class BukuController extends Controller
             'TahunTerbit'=> $request->TahunTerbit,
             'Pengarang'=> $request->Pengarang,
             'Sampul'=> $fileName,
+            'CreateBy'=> Auth::user()->id,
         ]);
         return redirect()->route('index.Buku');
     }

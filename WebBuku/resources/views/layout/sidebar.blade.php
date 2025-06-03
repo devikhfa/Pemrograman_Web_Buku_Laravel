@@ -189,7 +189,7 @@
           <img src="{{ asset('dist/img/userikhfaa.jpeg') }}" class="img-circle elevation-1" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ikhfa Risyah Aprilia</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -244,21 +244,13 @@
               </p>
             </a>
           </li>
-          
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/search/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Search</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/search/enhanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Enhanced</p>
-                </a>
-              </li>
-            </ul>
+          <li class="nav-item">
+            <a href="{{route('actionlogout')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Logout
+              </p>
+            </a>
           </li>
         </ul>
       </nav>

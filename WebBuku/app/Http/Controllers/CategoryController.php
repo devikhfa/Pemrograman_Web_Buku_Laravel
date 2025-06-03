@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class CategoryController extends Controller
 {
@@ -24,7 +26,7 @@ class CategoryController extends Controller
             'NamaCategory'=> $request->NamaCategory,
             'Description'=> $request->Description,
             'CreateAt'=> date ('Y-m-d'),
-            'CreateBy'=> '1',
+            'CreateBy'=> Auth::user()->id,
         ]);
         return redirect()->route('index.Category');
     }
@@ -39,7 +41,7 @@ class CategoryController extends Controller
             'NamaCategory'=> $request->NamaCategory,
             'Description'=> $request->Description,
             'CreateAt'=> date ('Y-m-d'),
-            'CreateBy'=> '1',
+            'CreateBy'=> Auth::user()->id,
         ]);
         return redirect()->route('index.Category');
     }

@@ -38,6 +38,7 @@
     }
 
     input[type="text"],
+    input[type="email"],
     input[type="password"] {
       width: 100%;
       padding: 10px;
@@ -67,13 +68,15 @@
 <body>
   <div class="login-container">
     <h1>Login</h1>
-    <form>
-      <label>Username</label>
-      <input type="text" placeholder="Masukkan username" />
+    <form action="{{ route('actionlogin') }}" method="POST">
+       @csrf
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Masukkan email" required />
       <label>Password</label>
-      <input type="password" placeholder="Masukkan password" />
+      <input type="password" name="password" placeholder="Masukkan password" required />
       <button type="submit">Login</button>
     </form>
+
   </div>
 </body>
 </html>
